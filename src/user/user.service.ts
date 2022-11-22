@@ -24,10 +24,6 @@ export class UserService {
     return this.userRepository.findOneBy({ email });
   }
 
-  getUserByUsername(username): Promise<User> {
-    return this.userRepository.findOne({ where: { username } });
-  }
-
   create(createUserDto: CreateUserDto) {
     return this.userRepository.save(createUserDto);
   }

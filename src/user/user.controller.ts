@@ -29,10 +29,6 @@ export class UserController {
   getUserByEmail(@Param('email') email: string) {
     return this.userService.getUserByEmail(email);
   }
-  @Get('/username/:username')
-  getUserByUsername(@Param('username') username: string) {
-    return this.userService.getUserByUsername(username);
-  }
 
   @Post()
   store(@Body() createUserDto: CreateUserDto) {
