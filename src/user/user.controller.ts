@@ -32,7 +32,7 @@ export class UserController {
 
   @Post()
   store(@Body() createUserDto: CreateUserDto) {
-    return this.userService.create(createUserDto);
+    return this.userService.createUser(createUserDto);
   }
 
   @Patch('/:userId')
@@ -40,7 +40,7 @@ export class UserController {
     @Body() updateUserDto: UpdateUserDto,
     @Param('userId', ParseIntPipe) userId: number,
   ) {
-    return this.userService.update(updateUserDto, userId);
+    return this.userService.updateUser(updateUserDto, userId);
   }
 
   @Delete('/:userId')

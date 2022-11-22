@@ -24,11 +24,11 @@ export class UserService {
     return this.userRepository.findOneBy({ email });
   }
 
-  create(createUserDto: CreateUserDto) {
+  createUser(createUserDto: CreateUserDto) {
     return this.userRepository.save(createUserDto);
   }
 
-  update(updateUserDto: UpdateUserDto, userId: number) {
+  updateUser(updateUserDto: UpdateUserDto, userId: number) {
     return this.userRepository.update(userId, updateUserDto);
   }
 
