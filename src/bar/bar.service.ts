@@ -9,38 +9,38 @@ import { Bar } from './entity/bar.entity';
 export class BarService {
   constructor(
     @InjectRepository(Bar)
-    private userRepository: Repository<Bar>,
+    private barRepository: Repository<Bar>,
   ) {}
 
   getBars(): Promise<Bar[]> {
-    return this.userRepository.find();
+    return this.barRepository.find();
   }
 
-  getBarById(@Param('barId', ParseIntPipe) barId: number): Promise<Bar>  {
-    return this.userRepository.findOneBy({ barId });
+  getBarById(@Param('barId', ParseIntPipe) barId: number): Promise<Bar> {
+    return this.barRepository.findOneBy({ barId });
   }
 
   getBarByName(barName: string): Promise<Bar> {
-    return this.userRepository.findOneBy({ barName });
+    return this.barRepository.findOneBy({ barName });
   }
 
-  getBarByPosition(barPosition: string): Promise<Bar> {
-    return this.userRepository.findOneBy({ barPosition });
+  getBarsByPosition(barPosition: string): Promise<Bar[]> {
+    return this.barRepository.find({ where: { barPosition } });
   }
 
-  getBarByModel(barModel: string): Promise<Bar> {
-    return this.userRepository.findOneBy({ barModel });
+  getBarsByModel(barModel: string): Promise<Bar[]> {
+    return this.barRepository.findBy({ barModel });
   }
 
   createBar(createBarDto: CreateBarDto) {
-    return this.userRepository.save(createBarDto);
+    return this.barRepository.save(createBarDto);
   }
 
   updateBar(updateBarDto: UpdateBarDto, barId: number) {
-    return this.userRepository.update(barId, updateBarDto);
+    return this.barRepository.update(barId, updateBarDto);
   }
 
   deleteBar(barId: number) {
-    return this.userRepository.delete(barId);
+    return this.barRepository.delete(barId);
   }
 }

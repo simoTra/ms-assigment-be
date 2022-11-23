@@ -31,18 +31,18 @@ export class BarController {
   }
 
   @Get('/name/:barName')
-  getBarByName(barName: string): Promise<Bar> {
+  getBarByName(@Param('barName')barName: string): Promise<Bar> {
     return this.barService.getBarByName(barName);
   }
 
   @Get('/position/:barPosition')
-  getBarByPosition(position: string): Promise<Bar> {
-    return this.barService.getBarByName(position);
+  getBarByPosition(@Param('barPosition')barPosition: string): Promise<Bar[]> {
+    return this.barService.getBarsByPosition(barPosition);
   }
 
   @Get('/model/:barModel')
-  getBarByModel(model: string): Promise<Bar> {
-    return this.barService.getBarByName(model);
+  getBarByModel(@Param('barModel')barModel: string): Promise<Bar[]> {
+    return this.barService.getBarsByModel(barModel);
   }
 
   @Post()
