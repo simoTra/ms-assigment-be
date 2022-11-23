@@ -15,8 +15,8 @@ import { CreateBarDto } from './dto/create-bar.dto';
 import { UpdateBarDto } from './dto/update-bar.dto';
 import { Bar } from './entity/bar.entity';
 
-@UseGuards(AuthGuard('jwt'))
 @Controller('bar')
+@UseGuards(AuthGuard('jwt'))
 export class BarController {
   constructor(private readonly barService: BarService) {}
 
@@ -25,22 +25,22 @@ export class BarController {
     return this.barService.getBars();
   }
 
-  @Get('/id/:id')
+  @Get('/id/:barId')
   getBarById(@Param('barId', ParseIntPipe) barId: number): Promise<Bar> {
     return this.barService.getBarById(barId);
   }
 
-  @Get('/name/:name')
+  @Get('/name/:barName')
   getBarByName(barName: string): Promise<Bar> {
     return this.barService.getBarByName(barName);
   }
 
-  @Get('/position/:position')
+  @Get('/position/:barPosition')
   getBarByPosition(position: string): Promise<Bar> {
     return this.barService.getBarByName(position);
   }
 
-  @Get('/model/:model')
+  @Get('/model/:barModel')
   getBarByModel(model: string): Promise<Bar> {
     return this.barService.getBarByName(model);
   }
