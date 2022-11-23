@@ -16,7 +16,7 @@ export class BarService {
     return this.userRepository.find();
   }
 
-  getBarById(@Param('barId', ParseIntPipe) barId: number) {
+  getBarById(@Param('barId', ParseIntPipe) barId: number): Promise<Bar>  {
     return this.userRepository.findOneBy({ barId });
   }
 
